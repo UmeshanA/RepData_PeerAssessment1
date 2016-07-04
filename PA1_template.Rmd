@@ -47,7 +47,7 @@ head(steps_taken_daily)
   
 Now that we have the total number of steps taken per day, the next step is to plot a histogram of the total number of steps taken per day.  
 
-```{r total number of steps histogram}
+```{r total number of steps histogram, fig.width = 8, fig.height = 6}
   ggplot (steps_taken_daily, aes(x=steps)) + geom_histogram(fill = "blue", binwidth = 1000) +
                 labs(title = "Histogram of Steps Taken per Day", 
                      x = "Number of Steps per Day", y = "Number of times in a day (Count) ")
@@ -76,7 +76,7 @@ colnames(steps_taken_interval) <-  c("interval", "steps")
 ```
   
 Now that this is done, we can plot a line graph:  
-```{r average daily activity pattern line graph}
+```{r average daily activity pattern line graph, fig.width = 8, fig.height = 6}
 ggplot(steps_taken_interval, aes(x=interval, y = steps)) + geom_line(color ="blue", size = 1) +
        labs(title = "Average Daily Activity Pattern", x = "Interval", y = "Number of steps")
 ```
@@ -129,7 +129,7 @@ Now, we check to see if there are any missing values after calling na_impute:
 We can see that there are no more missing values, after running the na_impute function.  
 
 Now a histogram is plotted with the new data:  
-```{r histogram after impute}
+```{r histogram after impute, fig.width = 8, fig.height = 6}
 daily_fill_steps <- aggregate(steps~date, activityData_fill, sum)
 colnames(daily_fill_steps) <- c("date","steps")
 ggplot(daily_fill_steps, aes(x = steps)) + geom_histogram(fill = "red", binwidth = 1000)+ labs(title = "Steps Taken Daily Histogram", x = "Number of steps taken per day", y = "Number of times in a day (Count)")
@@ -191,7 +191,7 @@ weekdaysData <-  weekdays_data(activityData_fill)
 
 Now that this has been done, a panel plot containing a time series plot, of the 5 minute interval (x axis) and the average number of steps taken, averaged across all weekdays or weekends (y axis):  
 
-```{r panel plot weekdays weekends}
+```{r panel plot weekdays weekends, fig.width = 8, fig.height = 6}
  ggplot(weekdaysData, aes(x= interval, y = steps)) +
        geom_line(color = "red") +
        facet_wrap(~dayofweek,nrow = 2, ncol = 1)+
