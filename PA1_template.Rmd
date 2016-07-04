@@ -1,6 +1,6 @@
 ---
 title: "Reproducible Research Course Project 1"
-output: md_document
+output: html_document
 ---
 
 ## Initialization  
